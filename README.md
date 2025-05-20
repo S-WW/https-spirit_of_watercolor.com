@@ -1,52 +1,74 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spirit of Watercolor</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #40e0d0; /* تركواز */
-    scroll-behavior: smooth;
+    font-family: 'Cairo', sans-serif;
+    background-color: #f9f9f9;
     color: #333;
+    scroll-behavior: smooth;
   }
   header {
-    background: linear-gradient(45deg, #40e0d0, #ffeb3b, #f06292);
-    padding: 1rem 0;
+    background-color: #4db6ac;
+    padding: 20px 0;
     text-align: center;
     color: white;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 1000;
   }
   header h1 {
     margin: 0;
+    font-weight: 700;
     font-size: 2.5rem;
-    animation: fadeInDown 1.5s ease-out;
+    letter-spacing: 2px;
   }
   nav {
-    margin-top: 0.5rem;
+    margin-top: 10px;
   }
   nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
   }
   nav a:hover {
-    color: #444;
+    color: #81c784;
   }
   section {
-    padding: 3rem 1rem;
     max-width: 1000px;
-    margin: auto;
-    animation: fadeInUp 1s ease-in-out;
-    background-color: rgba(255,255,255,0.85);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation-fill-mode: forwards;
+    animation-duration: 0.8s;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation-name: fadeInUp;
+  }
+  h2 {
+    color: #4db6ac;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+  }
+  p {
+    line-height: 1.6;
+    text-align: center;
   }
   .gallery {
     display: grid;
@@ -55,40 +77,33 @@
   }
   .gallery img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
   }
   .gallery img:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
   footer {
-    background: #333;
+    background-color: #4db6ac;
     color: white;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-weight: 600;
   }
-  h2 {
-    color: #f06292;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  p {
-    color: #555;
-    line-height: 1.6;
-    text-align: center;
-  }
-  @keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
+
   @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 </head>
@@ -104,12 +119,12 @@
   </nav>
 </header>
 
-<section id="home">
+<section id="home" class="section">
   <h2>الرئيسية</h2>
   <p>مرحباً بك في موقع Spirit of Watercolor، حيث نعرض لك جمال الألوان المائية والتصميم الإبداعي الذي ينبض بالحياة والهدوء.</p>
 </section>
 
-<section id="gallery">
+<section id="gallery" class="section">
   <h2>المعرض</h2>
   <div class="gallery">
     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="لوحة 1" />
@@ -121,12 +136,12 @@
   </div>
 </section>
 
-<section id="articles">
+<section id="articles" class="section">
   <h2>المقالات</h2>
   <p>اكتشف مقالات ملهمة حول تقنيات الرسم بالألوان المائية، ونصائح للفنانين المبتدئين والمحترفين.</p>
 </section>
 
-<section id="contact">
+<section id="contact" class="section">
   <h2>اتصل بنا</h2>
   <p>للتواصل معنا أو حجز ورشة عمل، الرجاء إرسال بريد إلكتروني إلى: <br><strong>contact@spiritofwatercolor.com</strong></p>
 </section>
@@ -134,6 +149,22 @@
 <footer>
   &copy; 2025 Spirit of Watercolor. جميع الحقوق محفوظة.
 </footer>
+
+<script>
+  // حركات ظهور ناعمة للسكشنات عند التمرير
+  function reveal() {
+    const sections = document.querySelectorAll('.section');
+    const windowHeight = window.innerHeight;
+    sections.forEach(section => {
+      const revealTop = section.getBoundingClientRect().top;
+      if (revealTop < windowHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', reveal);
+  window.addEventListener('load', reveal);
+</script>
 
 </body>
 </html>
